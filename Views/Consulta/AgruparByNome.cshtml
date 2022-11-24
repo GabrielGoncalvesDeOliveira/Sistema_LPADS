@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SistemaGestaoCantinasIgrejas.Models.Consulta.VendasGrp>
+
+@{
+    ViewData["Title"] = "AgruparByNome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Agrupar por nome</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.participante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.participante)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valor)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
