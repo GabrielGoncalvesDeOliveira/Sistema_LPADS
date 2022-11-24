@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Pesquisa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pesquisa de </h1>
+
+<h4>Participante</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Participante">
+            <div class="form-group">
+                <label class="control-label">Informação: </label>
+                <input type="text" name="filtro" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Participante">Listar Participantes</a>
+</div>
+
+@section Scripts {
+
+}
