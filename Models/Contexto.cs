@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemaGestaoCantinasIgrejas.Models.Consulta;
 
 namespace SistemaGestaoCantinasIgrejas.Models
 {
@@ -11,5 +12,6 @@ namespace SistemaGestaoCantinasIgrejas.Models
         public DbSet<Participante> participante { get; set; }
         public DbSet<Produto> produto { get; set; }
         public DbSet<Venda> venda { get; set; }
+        public DbSet<SistemaGestaoCantinasIgrejas.Models.Consulta.PivotMes> PivotMes { get; set; }
     }
 }

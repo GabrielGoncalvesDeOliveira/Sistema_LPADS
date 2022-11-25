@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SistemaGestaoCantinasIgrejas.Models.Consulta.PivotMes>
+
+@{
+    ViewData["Title"] = "PivotByMes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pivot por Mês</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mes1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mes2)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mes1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mes2)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

@@ -2,6 +2,8 @@
 using SistemaGestaoCantinasIgrejas.Models.Consulta;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SistemaGestaoCantinasIgrejas.Controllers.Extra;
+using System.Data;
 
 namespace SistemaGestaoCantinasIgrejas.Controllers
 {
@@ -127,7 +129,26 @@ namespace SistemaGestaoCantinasIgrejas.Controllers
                                                       valor = grupo.Sum(v => v.quantidade * v.valor)
                                                   };
 
-            return View(lstGrpVendas);
+            var PivotTableVenda = lstGrpVendas.ToList().ToPivotTable(
+                        pivo => pivo.mes,
+                        pivo => pivo.nome,
+                        pivo => pivo.Any() ? pivo.Sum(x => x.valor) : 0);
+
+            List<PivotMes> lista = new List<PivotMes>();
+            lista = (from DataRow coluna in PivotTableVenda.Rows
+                     select new PivotMes()
+                     {
+                         nome = Convert.ToString(coluna[0]),
+                         mes1 = Convert.ToSingle(coluna[1]),
+                         mes2 = Convert.ToSingle(coluna[2]),
+                         //mes3 = Convert.ToSingle(coluna[3]),
+                         //mes4 = Convert.ToSingle(coluna[4]),
+                         //mes5 = Convert.ToSingle(coluna[5]),
+                         //mes6 = Convert.ToSingle(coluna[6]),
+                     }
+            ).ToList();
+
+            return View(lista);
         }
     }
 }
